@@ -92,7 +92,7 @@ params:
       - image: climate.change.jpg
         subtitle: Learn more about climate change and temperature anomalies
         title: CLIMATE CHANGE
-        url: blogs/magna
+        url: blogs/climate_change
       - image: pay.disc.jpg
         subtitle: Learn more about pay discrimination in Omega Group
         title: PAY DISCRIMINATION
