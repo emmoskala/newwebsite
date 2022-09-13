@@ -15,13 +15,18 @@ library(here)
 library(janitor)
 ```
 
+## Get to know me
+
+My name is Emilia, I come from Cracow, which is one of the most beautiful cities in Poland. I am a recent graduate of Warsaw School of Economics in Quantitative Methods in Economics and Information Systems. In my free time I enjoy playing tennis and cooking.
+
 ## Early life
 
-My name is *Emilia Moskala* and I was born in Poland on 30.07.1999. My parents, Izabella and Jacek, lived in a small town in southern Poland - Kalwaria Zebrzydowska. That's where I spent the most of my childhood. After I graduated local primary school, me and my family moved to another city, Krakow, so that I can continue my secondary education.
+I was born in Poland on 30.07.1999. My parents, Izabella and Jacek, lived in a small town in southern Poland - Kalwaria Zebrzydowska. That's where I spent the most of my childhood. After I graduated local primary school, me and my family moved to another city, Krakow, so that I can continue my secondary education.
 
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("/img/cracow.jpg",error=FALSE)
 ```
+
 *Krakow is one of the most beautiful cities in Poland.*
 
 ## Education
@@ -41,6 +46,7 @@ During my studies, I applied for Deloitte's IT Academy, where I had an opportuni
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("/img/warsaw.jpg",error=FALSE)
 ```
+
 *This was my view from Deloitte's office.*
 
 ## London Business School
