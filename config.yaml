@@ -1,6 +1,6 @@
 baseURL: https://emmoskala.netlify.app/
 languageCode: en-us
-title: Forty
+title: Emilia Moskala's Portfolio Website
 theme: forty
 googleAnalytics: ''
 disqusShortname: ''
@@ -14,18 +14,18 @@ params:
   blog: {}
   contact:
     address:
-      - city: City, ST 00000
-        country: Country
-        street: Street
-        title: Address
+      - city: London, EN NW1
+        country: United Kingdom
+        street: Park Road
+        title: Adress
     buttonClear: Clear
     buttonSend: Send message
     email:
-      - email: example@domain.com
+      - email: emoskala.mam2023@london.edu
         title: Email
     enable: yes
     phone:
-      - phone: (000) 000-0000 x1234
+      - phone: (+44) 7774 814693
         title: Phone
   custom_css: []
   custom_js: []
