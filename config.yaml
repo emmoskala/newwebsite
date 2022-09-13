@@ -81,9 +81,9 @@ params:
   tiles:
     enable: yes
     showcase:
-      - image: banner.jpg
-        subtitle: Ipsum Dolor Sit Amet
-        title: Aliquam
+      - image: CV.jpg
+        subtitle: Learn about my professional achievements 
+        title: MY CV
         url: blogs/aliquam
       - image: pic02.jpg
         subtitle: Feugiat Amet Tempus
