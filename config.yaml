@@ -82,29 +82,29 @@ params:
     enable: yes
     showcase:
       - image: CV.jpg
-        subtitle: Learn about my professional achievements 
+        subtitle: Learn more about my professional achievements 
         title: MY CV
         url: blogs/aliquam
-      - image: pic02.jpg
-        subtitle: Feugiat Amet Tempus
-        title: Tempus
+      - image: safari.jpg
+        subtitle: Learn more about me
+        title: ABOUT ME
         url: blogs/tempus
-      - image: pic03.jpg
-        subtitle: Lorem Etiam Nullam
-        title: Magna
+      - image: climate.change.jpg
+        subtitle: Learn more about climate change and temperature anomalies
+        title: CLIMATE CHANGE
         url: blogs/magna
-      - image: pic04.jpg
-        subtitle: Nisl Sed Aliquam
-        title: Ipsum
+      - image: pay.disc.jpg
+        subtitle: Learn more about pay discrimination in Omega Group
+        title: PAY DISCRIMINATION
         url: blogs/ipsum
-      - image: pic05.jpg
-        subtitle: Ipsum Dolor Sit Amet
-        title: Consequat
-        url: blogs/ipsum
-      - image: pic06.jpg
-        subtitle: Feugiat Amet Tempus
-        title: Etiam
-        url: blogs/ipsum
+      # - image: pic05.jpg
+      #   subtitle: Ipsum Dolor Sit Amet
+      #   title: Consequat
+      #   url: blogs/ipsum
+      # - image: pic06.jpg
+      #   subtitle: Feugiat Amet Tempus
+      #   title: Etiam
+      #   url: blogs/ipsum
   two:
     buttonText: Get Started
     enable: yes
