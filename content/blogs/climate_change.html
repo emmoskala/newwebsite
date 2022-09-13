@@ -15,9 +15,9 @@ editor_options:
 
 
 
-<p>In this section I will conduct an analysis of climate change. The data
-has been collected by NASA’s Goddard Institute for Space Studies. The
-reference period for analysing the anomalies was set for 1951-1980.</p>
+<p>In this section I will conduct an analysis of weather anomalies between
+1880 - 2022. The data used in this analysis has been collected by NASA’s
+Goddard Institute for Space Studies.</p>
 <p>Let’s have a quick look at the data provided by NASA.</p>
 <pre class="r"><code>weather &lt;- 
   read_csv(&quot;https://data.giss.nasa.gov/gistemp/tabledata_v4/NH.Ts+dSST.csv&quot;, 
@@ -37,9 +37,11 @@ head(weather)</code></pre>
 ## # … with 6 more variables: `J-D` &lt;dbl&gt;, `D-N` &lt;dbl&gt;, DJF &lt;dbl&gt;, MAM &lt;dbl&gt;,
 ## #   JJA &lt;dbl&gt;, SON &lt;dbl&gt;
 ## # ℹ Use `colnames()` to see all variable names</code></pre>
-<p>The provided data gives us the information on the deviation of the
-temperature from expected temperature for every month and year between
-1880 and 2021.</p>
+<p>The data gives us the information on the deviation of the temperature
+from expected temperature for every month and year between 1880 and
+2021.</p>
+<div id="time-series-scatter-plot" class="section level2">
+<h2>Time-series scatter plot</h2>
 <p>Let’s see what was the dynamic of weather anomalies over years. In order
 to create a scatter plot, I need to pivot the table using function
 <code>pivot_longer.</code></p>
@@ -84,6 +86,9 @@ from other months. Therefore, we can conclude that the climate change
 influences deviations in temperature regardless of the month or
 season.</p>
 </blockquote>
+</div>
+<div id="density-plot-of-weather-anomalies" class="section level2">
+<h2>Density plot of weather anomalies</h2>
 <p>Now, let’s produce a density plot of weather anomalies for 5 time
 periods starting from 1880. In order to do this, I need to create new
 variable <code>interval</code> using <code>mutate</code> function.</p>
@@ -108,6 +113,9 @@ variable <code>interval</code> using <code>mutate</code> function.</p>
     color = &quot;Decade&quot;
   )</code></pre>
 <p><img src="/blogs/climate_change_files/figure-html/density_plot-1.png" width="648" style="display: block; margin: auto;" /></p>
+</div>
+<div id="average-annual-anomalies" class="section level2">
+<h2>Average annual anomalies</h2>
 <p>We can also create a plot for average yearly anomalies. To produce this
 graph, I need to create yearly averages using <code>group_by</code> and <code>summarise</code>
 functions. I am using <code>loess</code> method to see the trend over time.</p>
@@ -127,6 +135,7 @@ average_annual_anomaly %&gt;%
     color = &quot;Is weather anomaly positive?&quot;
   )</code></pre>
 <p><img src="/blogs/climate_change_files/figure-html/averaging-1.png" width="648" style="display: block; margin: auto;" /></p>
+</div>
 <div id="confidence-interval-for-delta" class="section level2">
 <h2>Confidence Interval for <code>delta</code></h2>
 <p>Let’s construct confidence interval for weather anomalies since 2011.

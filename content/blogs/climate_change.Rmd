@@ -51,9 +51,9 @@ library(infer)
     knitr::include_graphics("/img/climate.change.jpg",error=FALSE)
 ```
 
-In this section I will conduct an analysis of climate change. The data
-has been collected by NASA's Goddard Institute for Space Studies. The
-reference period for analysing the anomalies was set for 1951-1980.
+In this section I will conduct an analysis of weather anomalies between
+1880 - 2022. The data used in this analysis has been collected by NASA's
+Goddard Institute for Space Studies.
 
 Let's have a quick look at the data provided by NASA.
 
@@ -68,9 +68,11 @@ head(weather)
 
 ```
 
-The provided data gives us the information on the deviation of the
-temperature from expected temperature for every month and year between
-1880 and 2021.
+The data gives us the information on the deviation of the temperature
+from expected temperature for every month and year between 1880 and
+2021.
+
+## Time-series scatter plot 
 
 Let's see what was the dynamic of weather anomalies over years. In order
 to create a scatter plot, I need to pivot the table using function
@@ -130,6 +132,8 @@ ggplot(tidyweather, aes(x=date, y = delta))+
 > influences deviations in temperature regardless of the month or
 > season.
 
+## Density plot of weather anomalies 
+
 Now, let's produce a density plot of weather anomalies for 5 time
 periods starting from 1880. In order to do this, I need to create new
 variable `interval` using `mutate` function.
@@ -162,6 +166,8 @@ comparison %>%
     color = "Decade"
   )
 ```
+
+## Average annual anomalies
 
 We can also create a plot for average yearly anomalies. To produce this
 graph, I need to create yearly averages using `group_by` and `summarise`
