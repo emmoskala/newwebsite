@@ -8,8 +8,7 @@ params:
   banner:
     buttonText: Get Started
     subtitle: |-
-      A RESPONSIVE SITE TEMPLATE DESIGNED BY HTML5 UP
-      AND RELEASED UNDER THE CREATIVE COMMONS.
+      YOU ARE VISITING MY PORTFOLIO WEBSITE. 
     title: Hi, my name is Emilia
   blog: {}
   contact:
@@ -59,7 +58,7 @@ params:
         label: LinkedIn
         url: https://www.linkedin.com/in/emoskala/
   image: ''
-  name: Your name
+  name: EMILIA MOSKALA
   navigation:
     button1:
       - name: Get Started
@@ -77,8 +76,8 @@ params:
       - name: Elements
         url: elements.html
     menu: Menu
-    subtitle: By HTML5 Up
-    title: Forty
+    #subtitle: By HTML5 Up
+    title: EMILIA MOSKALA'S PORTFOLIO WEBSITE
   tiles:
     enable: yes
     showcase:
