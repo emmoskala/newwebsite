@@ -1,7 +1,5 @@
 ---
-title: 'MAM 2023 Pre-programme Assignment'
-author: "Emilia Moskala"
-date: "22.08.2022"
+title: 'ABOUT ME'
 output:
   html_document:
     theme: flatly
@@ -17,12 +15,14 @@ library(here)
 library(janitor)
 ```
 
-
-# Biography of Emilia Moskala
-
 ## Early life
 
 My name is *Emilia Moskala* and I was born in Poland on 30.07.1999. My parents, Izabella and Jacek, lived in a small town in southern Poland - Kalwaria Zebrzydowska. That's where I spent the most of my childhood. After I graduated local primary school, me and my family moved to another city, Krakow, so that I can continue my secondary education.
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/img/cracow.jpg",error=FALSE)
+```
+*Krakow is one of the most beautiful cities in Poland.*
 
 ## Education
 
@@ -38,7 +38,15 @@ After graduating High School, I enrolled [Warsaw School of Economics](https://ww
 
 During my studies, I applied for Deloitte's IT Academy, where I had an opportunity to learn about information systems, integration, IT architecture, and data warehouse. Headhunted by recruiters, I joined Technology Strategy & Transformation at Deloitte Digital.
 
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/img/warsaw.jpg",error=FALSE)
+```
+*This was my view from Deloitte's office*
+
 ## London Business School
 
-![Image](https://e-gmat.com/blogs/wp-content/uploads/2019/01/LBS-MBA-London-business-school.jpg) Through my experience at Deloitte, I realised that I would like to deepen my knowledge on the opportunities posed by digital disruption, and I found MAM curriculum perfectly tailored not only for my professional but also academic interests. Therefore, I decided to continue my education at LBS.
+Through my experience at Deloitte, I realised that I would like to deepen my knowledge on the opportunities posed by digital disruption, and I found MAM curriculum perfectly tailored not only for my professional but also academic interests. Therefore, I decided to continue my education at LBS.
 
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/img/london.jpg",error=FALSE)
+```
