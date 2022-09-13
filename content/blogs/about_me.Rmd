@@ -1,0 +1,44 @@
+---
+title: 'MAM 2023 Pre-programme Assignment'
+author: "Emilia Moskala"
+date: "22.08.2022"
+output:
+  html_document:
+    theme: flatly
+    highlight: zenburn
+    toc: yes
+    toc_float: yes
+---
+
+```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(gapminder)  # gapminder dataset
+library(here)
+library(janitor)
+```
+
+
+# Biography of Emilia Moskala
+
+## Early life
+
+My name is *Emilia Moskala* and I was born in Poland on 30.07.1999. My parents, Izabella and Jacek, lived in a small town in southern Poland - Kalwaria Zebrzydowska. That's where I spent the most of my childhood. After I graduated local primary school, me and my family moved to another city, Krakow, so that I can continue my secondary education.
+
+## Education
+
+I continued my education at **August Witkowski Vth High School** in Krakow, where I focused on the following majors:
+
+1)  Mathematics,
+2)  Physics,
+3)  IT.
+
+After graduating High School, I enrolled [Warsaw School of Economics](https://www.sgh.waw.pl/en), the best economic university in Poland. I pursued *Quantitative Methods in Economics and Information Systems* programme, where I had an opportunity to take up courses elaborating on applications of IT in enterprises.
+
+## Business Background
+
+During my studies, I applied for Deloitte's IT Academy, where I had an opportunity to learn about information systems, integration, IT architecture, and data warehouse. Headhunted by recruiters, I joined Technology Strategy & Transformation at Deloitte Digital.
+
+## London Business School
+
+![Image](https://e-gmat.com/blogs/wp-content/uploads/2019/01/LBS-MBA-London-business-school.jpg) Through my experience at Deloitte, I realised that I would like to deepen my knowledge on the opportunities posed by digital disruption, and I found MAM curriculum perfectly tailored not only for my professional but also academic interests. Therefore, I decided to continue my education at LBS.
+

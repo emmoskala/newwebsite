@@ -88,7 +88,7 @@ params:
       - image: safari.jpg
         subtitle: Learn more about me
         title: ABOUT ME
-        url: blogs/tempus
+        url: blogs/about_me
       - image: climate.change.jpg
         subtitle: Learn more about climate change and temperature anomalies
         title: CLIMATE CHANGE
