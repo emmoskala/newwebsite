@@ -1,0 +1,15 @@
+---
+title: 'MY CV'
+output:
+  html_document:
+    theme: flatly
+    highlight: zenburn
+    toc: yes
+    toc_float: yes
+---
+
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/img/resume.pdf",error=FALSE)
+
+```
