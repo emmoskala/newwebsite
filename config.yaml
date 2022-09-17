@@ -97,10 +97,6 @@ params:
         subtitle: Learn more about pay discrimination in Omega Group
         title: PAY DISCRIMINATION
         url: blogs/omega
-      - image: pay.disc.jpg
-        subtitle: Learn more about share of renewable energy production
-        title: RENEWABLE ENERGY PRODUCTION
-        url: blogs/energy       
       # - image: pic06.jpg
       #   subtitle: Feugiat Amet Tempus
       #   title: Etiam
