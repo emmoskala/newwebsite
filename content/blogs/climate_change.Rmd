@@ -72,7 +72,7 @@ The data gives us the information on the deviation of the temperature
 from expected temperature for every month and year between 1880 and
 2021.
 
-## Time-series scatter plot 
+## Time-series scatter plot
 
 Let's see what was the dynamic of weather anomalies over years. In order
 to create a scatter plot, I need to pivot the table using function
@@ -132,7 +132,7 @@ ggplot(tidyweather, aes(x=date, y = delta))+
 > influences deviations in temperature regardless of the month or
 > season.
 
-## Density plot of weather anomalies 
+## Density plot of weather anomalies
 
 Now, let's produce a density plot of weather anomalies for 5 time
 periods starting from 1880. In order to do this, I need to create new

@@ -12,7 +12,7 @@ output:
 
 In this section I will analyse salary data provided of Omega Group executives in order to determine whether gender discrimination problem exists in the company.
 
-```{r, setup, }
+```{r, setup,  include=FALSE}
 knitr::opts_chunk$set(
   message = FALSE, 
   warning = FALSE, 
@@ -28,7 +28,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r load-libraries, }
+```{r load-libraries,  include=FALSE}
 library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
 library(mosaic)
 library(ggthemes)
