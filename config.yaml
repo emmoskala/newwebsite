@@ -84,7 +84,7 @@ params:
       - image: CV.jpg
         subtitle: Learn more about my professional achievements 
         title: MY CV
-        url: blogs/CV
+        url: docs/CV.pdf
       - image: hobby.jpg
         subtitle: Learn more about me
         title: ABOUT ME
