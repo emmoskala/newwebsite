@@ -97,10 +97,15 @@ params:
         subtitle: Learn more about pay discrimination in Omega Group
         title: PAY DISCRIMINATION
         url: blogs/omega
-      # - image: pic06.jpg
-      #   subtitle: Feugiat Amet Tempus
-      #   title: Etiam
-      #   url: blogs/ipsum
+      - image: pay.disc.jpg
+        subtitle: Learn more about GDP components among countries
+        title: GDP COMPONENTS
+        url: blogs/GDP
+      - image: pay.disc.jpg
+        subtitle: Learn more about xx
+        title: ENERGY
+        url: blogs/energy        
+
   two:
     buttonText: Get Started
     enable: yes
