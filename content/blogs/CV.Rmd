@@ -1,5 +1,6 @@
 ---
 title: 'MY CV'
+image: CV.jpg
 output:
   html_document:
     theme: flatly
@@ -10,6 +11,6 @@ output:
 
 
 ```{r, echo = FALSE, out.width="100%"}
-knitr::include_graphics("/img/resume.pdf",error=FALSE)
+knitr::include_graphics("/img/resume.jpg",error=FALSE)
 
 ```
