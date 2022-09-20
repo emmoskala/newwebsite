@@ -65,7 +65,7 @@ params:
         url: blogs
 #    button2:
 #      - name: Log In
-        url: '#'
+#        url: '#'
     links:
       - name: Home
         url: '#'
@@ -73,10 +73,6 @@ params:
         url: blogs
       - name: My CV
         url: docs/CV.pdf     
-#      - name: Generic Blog
-#        url: blogs/ipsum
-#      - name: Elements
-#        url: elements.html
     menu: Menu
     #subtitle: By HTML5 Up
     title: EMILIA MOSKALA'S PORTFOLIO WEBSITE
@@ -99,11 +95,11 @@ params:
         subtitle: Learn more about pay discrimination in Omega Group
         title: PAY DISCRIMINATION
         url: blogs/omega
-      - image: pay.disc.jpg
+      - image: gdp.jpg
         subtitle: Learn more about GDP components among countries
         title: GDP COMPONENTS
         url: blogs/gdp
-      - image: pay.disc.jpg
+      - image: renewables.jpg
         subtitle: Learn more about renewable energy production
         title: RENEWABLE ENERGY
         url: blogs/energy        
