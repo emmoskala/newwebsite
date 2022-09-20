@@ -16,16 +16,9 @@ editor_options:
 
 
 
-<p>Let’s conduct an analysis to see how GDP and its components have changed
-over time, and compare different countries and how much each component
-contributes to that country’s GDP. The main components of gross domestic
-product are:</p>
-<ol style="list-style-type: decimal">
-<li>C - personal consumption</li>
-<li>I - business investment (I)</li>
-<li>G - government spending</li>
-<li>Net exports (exports - imports).</li>
-</ol>
+<p>In this section we will conduct an analysis to see how GDP and its
+components have changed over time, and compare different countries and
+how much each component contributes to that country’s GDP.</p>
 <div id="loading-the-data" class="section level2">
 <h2>Loading the data</h2>
 <p>The file we will work with is <a href="http://unstats.un.org/unsd/amaapi/api/file/6">GDP and its breakdown at constant 2010
@@ -35,8 +28,8 @@ using <code>read_excel</code> function:</p>
 <pre class="r"><code>UN_GDP_data  &lt;-  read_excel(here::here(&quot;data&quot;, &quot;Download-GDPconstant-USD-countries.xls&quot;), 
                 sheet=&quot;Download-GDPconstant-USD-countr&quot;, 
                 skip=2) </code></pre>
-<p>The data provided is is in wide format. Therefore, we need to make it
-tidy by pivoting longer.</p>
+<p>The data provided is in wide format. Therefore, we need to make it tidy
+by pivoting longer.</p>
 <pre class="r"><code>tidy_GDP_data &lt;- UN_GDP_data %&gt;% 
   pivot_longer(cols=4:51,
                names_to = &quot;Year&quot;,
@@ -60,9 +53,9 @@ expressed in billions.</p>
 tidy_GDP_data&lt;-tidy_GDP_data %&gt;% 
   filter(Country==country_list) %&gt;% 
   mutate(value=value/10^9)</code></pre>
-<p>Further, I need to change indicator names to make my graph more
-understandable. I am also changing variable Year for <code>integer</code> and
-omitting missing values before I start plotting.</p>
+<p>Further, we need to change indicator names to make my graph more
+understandable. We should also change variable Year for <code>integer</code> and
+omit missing values before we start plotting.</p>
 <pre class="r"><code>tidy_GDP_for_graph1 &lt;- tidy_GDP_data %&gt;% 
   mutate(components_of_GDP=case_when(
     grepl(&quot;Exports&quot;,IndicatorName) ~ &quot;Exports&quot;,
@@ -95,9 +88,9 @@ GDP in Germany, India and United States.</p>
 <h2>GDP as sum of components</h2>
 <p>As mentioned above, GDP is the sum of Household Expenditure (Consumption
 <em>C</em>), Gross Capital Formation (business investment <em>I</em>), Government
-Expenditure (G) and Net Exports (exports - imports).</p>
-<p>Even though there is an indicator <code>Gross Domestic Product (GDP)</code> in your
-dataframe, let’s calculate it given its components discussed above.</p>
+Expenditure (G) and Net Exports (exports - imports). Even though there
+is an indicator <code>Gross Domestic Product (GDP)</code> in your dataframe, let’s
+calculate it given its components discussed above.</p>
 <p>First, we need to pivot out table wider to calculate GDP as sum of its
 components, we will call it <code>wider_gdp</code>. Than, we will use <code>left_join</code>
 function to connect the tables by country and year and to see the
