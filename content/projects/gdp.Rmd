@@ -1,0 +1,293 @@
+---
+title: "GDP Components"
+output:
+  html_document:
+    theme: flatly
+    highlight: zenburn
+    number_sections: yes
+    toc: yes
+    toc_float: yes
+    code_folding: show
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r, echo = FALSE }
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+```{r load-libraries, echo = FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(GGally)
+library(readxl)
+library(here)
+library(skimr)
+library(janitor)
+library(broom)
+library(tidyquant)
+library(infer)
+library(openintro)
+```
+
+Let's conduct an analysis to see how GDP and its components have changed
+over time, and compare different countries and how much each component
+contributes to that country's GDP. The main components of gross domestic
+product are:
+
+1.  C - personal consumption
+2.  I - business investment (I)
+3.  G - government spending
+4.  Net exports (exports - imports).
+
+The file we will work with is [GDP and its breakdown at constant 2010
+prices in US Dollars](http://unstats.un.org/unsd/amaapi/api/file/6).
+Let's have look at the dataset to see how it is structured and organised
+using `read_excel` function:
+
+```{r read_GDP_data}
+
+UN_GDP_data  <-  read_excel(here::here("data", "Download-GDPconstant-USD-countries.xls"), 
+                sheet="Download-GDPconstant-USD-countr", 
+                skip=2) 
+```
+
+The data provided is is in wide format. Therefore, we need to make it
+tidy by pivoting longer.
+
+```{r reshape_GDP_data}
+
+tidy_GDP_data <- UN_GDP_data %>% 
+  pivot_longer(cols=4:51,
+               names_to = "Year",
+               values_to = "value")
+glimpse(tidy_GDP_data)
+
+
+
+
+```
+
+I want to compare GDP components between 3 countries that I am
+interested in. To do this, I am creating a vector with chosen countries.
+Further, I mutate the value by dividing them by 1e9 so that the figures
+are expressed in billions.
+
+```{r }
+country_list <- c("United States","India", "Germany")
+tidy_GDP_data<-tidy_GDP_data %>% 
+  filter(Country==country_list) %>% 
+  mutate(value=value/10^9)
+```
+
+Further, I need to change indicator names to make my graph more
+understandable. I am also changing variable Year for `integer` and
+omitting missing values before I start plotting.
+
+```{r gdp1_code}
+
+tidy_GDP_for_graph1 <- tidy_GDP_data %>% 
+  mutate(components_of_GDP=case_when(
+    grepl("Exports",IndicatorName) ~ "Exports",
+    grepl("Gross capital formation",IndicatorName) ~ "Gross capital formation",
+    grepl("Government",IndicatorName) ~ "Government expenditure",
+    grepl("government",IndicatorName) ~ "Government expenditure",
+    grepl("Household",IndicatorName) ~ "Household expenditure",
+    grepl("household",IndicatorName) ~ "Household expenditure",
+    grepl("Imports",IndicatorName)~"Imports"
+  )) %>% 
+  mutate(Year = as.integer(Year)) %>% 
+  na.omit(components_of_GDP)
+
+
+```
+
+Now we can start plotting our graph of evolution of the components of
+GDP in Germany, India and United States.
+
+```{r}
+ggplot(tidy_GDP_for_graph1,
+       aes(x=Year,y=value,color=components_of_GDP))+
+  geom_line(aes(group=components_of_GDP))+
+  facet_wrap(~Country)+
+  labs(
+    title = "Evolution of the components of GDP by country",
+    subtitle = "In Constant 2010 USD",
+    caption = "Source: United Nations' National Accounts Main Aggregates Database",
+    color = "GDP Components",
+    x = "Year",
+    y = "Value in $M"
+  )
+
+```
+
+As mentioned above, GDP is the sum of Household Expenditure (Consumption
+*C*), Gross Capital Formation (business investment *I*), Government
+Expenditure (G) and Net Exports (exports - imports).
+
+Even though there is an indicator `Gross Domestic Product (GDP)` in your
+dataframe, let's calculate it given its components discussed above.
+
+First, we need to pivot out table wider to calculate GDP as sum of its
+components, we will call it `wider_gdp`. Than, we will use `left_join`
+function to connect the tables by country and year and to see the
+percentage comparison.
+
+```{r}
+tidy_GDP_for_graph1 %>% 
+  select(Country, components_of_GDP, Year, value) %>% 
+  pivot_wider(names_from = components_of_GDP, values_from = value) %>% 
+  janitor::clean_names() %>% 
+  mutate(
+    net_exports = exports - imports,
+    gdp = household_expenditure + government_expenditure + gross_capital_formation + net_exports
+    ) -> wider_gdp
+
+wider_gdp %>% 
+  select(country, year, gdp)
+
+tidy_GDP_data_for_join = tidy_GDP_data%>% 
+  filter(IndicatorName=="Gross Domestic Product (GDP)") %>% 
+  mutate(Year=as.integer(Year)) %>% 
+  select(Country,Year,value)
+  
+  
+tidy_GDP_data_comparison=left_join(wider_gdp,tidy_GDP_data_for_join,by=c("country"="Country","year"="Year"))
+
+tidy_GDP_data_comparison %>% 
+  mutate(percentage_change=(value-gdp)/value) %>% 
+  select(country,year,gdp,value,percentage_change)
+```
+
+> Above in the table we may see that there are some minor differences
+> between what we calculated as GDP and the GDP figure included in the
+> dataset.
+
+Let's see what was the dynamic of GDP and its components in percentage
+of GDP between the countries we chosen previously.
+
+```{r}
+wider_gdp %>% 
+  mutate(
+    percentage_GE = 100*government_expenditure/gdp,
+    percentage_GCF = 100*gross_capital_formation/gdp,
+    percentage_HE = 100*household_expenditure/gdp,
+    percentage_NE = 100*net_exports/gdp
+  ) %>% 
+  select(country, year, percentage_GE, percentage_GCF, percentage_HE, percentage_NE) %>% 
+  pivot_longer(cols = 3:6, names_to = "component_of_gdp", values_to = "value") %>% 
+  ggplot(aes(x=year, y=value, color=component_of_gdp)) +
+    geom_line() +
+    facet_wrap(~country) +
+    theme_minimal() +
+    labs(
+      title = "GDP and its breakdown at constant 2010 prices in US Dollars",
+      x = NULL,
+      y = "% of GDP",
+      caption = "Source: United Nations",
+      color = NULL
+    ) +
+    scale_color_hue(
+      labels = c('Gross Capital Formation', 
+                 'Government Expenditure', 
+                 'Household Expenditure',
+                 'Net Exports'
+                 )
+      )
+```
+
+> For all three countries household expenditure is the biggest
+> contributor to the GDP, followed by gross capital formation,
+> government expenditure, and finally Net Exports.
+>
+> The graph clearly shows that Germany is an exporting country, whereas
+> the US seems to import more than it exports, and India seems to
+> fluctuate close to zero.
+>
+> Between the three countries, India experiences the highest variability
+> in GDP components, with Gross Capital Formation increasing greatly,
+> and household expenditure decreasing greatly. In the United States,
+> gross capital formation and government expenditure contributed roughly
+> the same amount, with gross capital formation briefly increasing to
+> more than government expenditure, before dipping back down to less
+> than government expenditure.
+
+Finally, let's plot a graph showing a dynamic of GDP and its components
+between Poland, Spain, Singapore and China over given time period.
+
+```{r}
+country_list <- c("Poland","Spain", "Singapore", "China")
+
+tidy_GDP_data <- UN_GDP_data %>% 
+  pivot_longer(cols=4:51,
+               names_to = "Year",
+               values_to = "value")
+
+tidy_GDP_data<-tidy_GDP_data %>% 
+  filter(Country==country_list) %>% 
+  mutate(value=value/10^9)
+
+tidy_GDP_for_graph1 <- tidy_GDP_data %>% 
+  mutate(components_of_GDP=case_when(
+    grepl("Exports",IndicatorName) ~ "Exports",
+    grepl("Gross capital formation",IndicatorName) ~ "Gross capital formation",
+    grepl("Government",IndicatorName) ~ "Government expenditure",
+    grepl("government",IndicatorName) ~ "Government expenditure",
+    grepl("Household",IndicatorName) ~ "Household expenditure",
+    grepl("household",IndicatorName) ~ "Household expenditure",
+    grepl("Imports",IndicatorName)~"Imports"
+  )) %>% 
+  mutate(Year = as.integer(Year)) %>% 
+  na.omit(components_of_GDP)
+
+tidy_GDP_for_graph1 %>% 
+  select(Country, components_of_GDP, Year, value) %>% 
+  pivot_wider(names_from = components_of_GDP, values_from = value) %>% 
+  janitor::clean_names() %>% 
+  mutate(
+    net_exports = exports - imports,
+    gdp = household_expenditure + government_expenditure + gross_capital_formation + net_exports
+    ) -> wider_gdp
+
+wider_gdp %>% 
+  mutate(
+    percentage_GE = 100*government_expenditure/gdp,
+    percentage_GCF = 100*gross_capital_formation/gdp,
+    percentage_HE = 100*household_expenditure/gdp,
+    percentage_NE = 100*net_exports/gdp
+  ) %>% 
+  select(country, year, percentage_GE, percentage_GCF, percentage_HE, percentage_NE) %>% 
+  pivot_longer(cols = 3:6, names_to = "component_of_gdp", values_to = "value") %>% 
+  ggplot(aes(x=year, y=value, color=component_of_gdp)) +
+    geom_line() +
+    facet_wrap(~country) +
+    theme_minimal() +
+    labs(
+      title = "GDP and its breakdown at constant 2010 prices in US Dollars",
+      x = NULL,
+      y = "% of GDP",
+      caption = "Source: United Nations",
+      color = NULL
+    ) +
+    scale_fill_discrete(
+      labels = c('Gross Capital Formation', 
+                 'Government Expenditure', 
+                 'Household Expenditure',
+                 'Net Exports'
+                 )
+      )
+```
