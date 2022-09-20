@@ -1,5 +1,6 @@
 ---
 title: 'ABOUT ME'
+image: hobby.jpg
 output:
   html_document:
     theme: flatly

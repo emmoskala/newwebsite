@@ -1,5 +1,6 @@
 ---
 title: "GDP Components"
+image: gdp.jpg
 output:
   html_document:
     theme: flatly

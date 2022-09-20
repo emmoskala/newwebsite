@@ -1,5 +1,6 @@
 ---
 title: "Omega group pay discrimination"
+image: pay.disc.jpg
 output:
   html_document:
     theme: flatly
