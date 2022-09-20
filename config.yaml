@@ -63,16 +63,15 @@ params:
     button1:
       - name: Get Started
         url: blogs
-#    button2:
-#      - name: Log In
-#        url: '#'
+    button2:
+      - name: DOWNLOAD CV
+        url: docs/CV.pdf     
     links:
       - name: Home
         url: '#'
       - name: Blogs
         url: blogs
-      - name: My CV
-        url: docs/CV.pdf     
+
     menu: Menu
     #subtitle: By HTML5 Up
     title: EMILIA MOSKALA'S PORTFOLIO WEBSITE
