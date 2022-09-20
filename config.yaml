@@ -63,14 +63,16 @@ params:
     button1:
       - name: Get Started
         url: blogs
-    button2:
-      - name: Log In
+#    button2:
+#      - name: Log In
         url: '#'
     links:
       - name: Home
         url: '#'
       - name: Blogs
         url: blogs
+      - name: My CV
+        url: docs/CV.pdf     
 #      - name: Generic Blog
 #        url: blogs/ipsum
 #      - name: Elements
@@ -100,10 +102,10 @@ params:
       - image: pay.disc.jpg
         subtitle: Learn more about GDP components among countries
         title: GDP COMPONENTS
-        url: blogs/GDP
+        url: blogs/gdp
       - image: pay.disc.jpg
-        subtitle: Learn more about xx
-        title: ENERGY
+        subtitle: Learn more about renewable energy production
+        title: RENEWABLE ENERGY
         url: blogs/energy        
 
   two:
