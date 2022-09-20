@@ -71,6 +71,8 @@ params:
         url: '#'
       - name: Blogs
         url: blogs
+      - name: ABOUT ME
+        url: blogs/about_me
 
     menu: Menu
     #subtitle: By HTML5 Up
@@ -78,14 +80,14 @@ params:
   tiles:
     enable: yes
     showcase:
-      - image: CV.jpg
-        subtitle: Learn more about my professional achievements 
-        title: MY CV
-        url: docs/CV.pdf
-      - image: hobby.jpg
-        subtitle: Learn more about me
-        title: ABOUT ME
-        url: blogs/about_me
+#      - image: CV.jpg
+#        subtitle: Learn more about my professional achievements 
+#        title: MY CV
+#        url: docs/CV.pdf
+#      - image: hobby.jpg
+#        subtitle: Learn more about me
+#        title: ABOUT ME
+#        url: blogs/about_me
       - image: climate.change.jpg
         subtitle: Learn more about climate change and temperature anomalies
         title: CLIMATE CHANGE
