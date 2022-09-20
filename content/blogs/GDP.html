@@ -26,6 +26,8 @@ product are:</p>
 <li>G - government spending</li>
 <li>Net exports (exports - imports).</li>
 </ol>
+<div id="loading-the-data" class="section level2">
+<h2>Loading the data</h2>
 <p>The file we will work with is <a href="http://unstats.un.org/unsd/amaapi/api/file/6">GDP and its breakdown at constant 2010
 prices in US Dollars</a>.
 Let’s have look at the dataset to see how it is structured and organised
@@ -47,10 +49,13 @@ glimpse(tidy_GDP_data)</code></pre>
 ## $ IndicatorName &lt;chr&gt; &quot;Final consumption expenditure&quot;, &quot;Final consumption expe…
 ## $ Year          &lt;chr&gt; &quot;1970&quot;, &quot;1971&quot;, &quot;1972&quot;, &quot;1973&quot;, &quot;1974&quot;, &quot;1975&quot;, &quot;1976&quot;, …
 ## $ value         &lt;dbl&gt; 5.56e+09, 5.33e+09, 5.20e+09, 5.75e+09, 6.15e+09, 6.32e+…</code></pre>
-<p>I want to compare GDP components between 3 countries that I am
-interested in. To do this, I am creating a vector with chosen countries.
-Further, I mutate the value by dividing them by 1e9 so that the figures
-are expressed in billions.</p>
+</div>
+<div id="components-of-gdp-over-time" class="section level2">
+<h2>Components of GDP over time</h2>
+<p>Let’s compare GDP components between 3 countries that we are interested
+in. To do this, we are creating a vector with chosen countries. Further,
+we mutate the value by dividing them by <code>1e9</code> so that the figures are
+expressed in billions.</p>
 <pre class="r"><code>country_list &lt;- c(&quot;United States&quot;,&quot;India&quot;, &quot;Germany&quot;)
 tidy_GDP_data&lt;-tidy_GDP_data %&gt;% 
   filter(Country==country_list) %&gt;% 
@@ -85,6 +90,9 @@ GDP in Germany, India and United States.</p>
     y = &quot;Value in $M&quot;
   )</code></pre>
 <p><img src="/blogs/gdp_files/figure-html/unnamed-chunk-3-1.png" width="648" style="display: block; margin: auto;" /></p>
+</div>
+<div id="gdp-as-sum-of-components" class="section level2">
+<h2>GDP as sum of components</h2>
 <p>As mentioned above, GDP is the sum of Household Expenditure (Consumption
 <em>C</em>), Gross Capital Formation (business investment <em>I</em>), Government
 Expenditure (G) and Net Exports (exports - imports).</p>
@@ -151,6 +159,9 @@ tidy_GDP_data_comparison %&gt;%
 between what we calculated as GDP and the GDP figure included in the
 dataset.</p>
 </blockquote>
+</div>
+<div id="components-expressed-in-percentage-of-gdp" class="section level2">
+<h2>Components expressed in percentage of GDP</h2>
 <p>Let’s see what was the dynamic of GDP and its components in percentage
 of GDP between the countries we chosen previously.</p>
 <pre class="r"><code>wider_gdp %&gt;% 
@@ -196,6 +207,9 @@ the same amount, with gross capital formation briefly increasing to
 more than government expenditure, before dipping back down to less
 than government expenditure.</p>
 </blockquote>
+</div>
+<div id="gdp-breakdown-comparison" class="section level2">
+<h2>GDP breakdown comparison</h2>
 <p>Finally, let’s plot a graph showing a dynamic of GDP and its components
 between Poland, Spain, Singapore and China over given time period.</p>
 <pre class="r"><code>country_list &lt;- c(&quot;Poland&quot;,&quot;Spain&quot;, &quot;Singapore&quot;, &quot;China&quot;)
@@ -259,3 +273,4 @@ wider_gdp %&gt;%
                  )
       )</code></pre>
 <p><img src="/blogs/gdp_files/figure-html/unnamed-chunk-6-1.png" width="648" style="display: block; margin: auto;" /></p>
+</div>

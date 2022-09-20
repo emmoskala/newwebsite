@@ -19,6 +19,8 @@ editor_options:
 <p>In this section I will conduct an analysis of weather anomalies between
 1880 - 2022. The data used in this analysis has been collected by NASA’s
 Goddard Institute for Space Studies.</p>
+<div id="loading-the-data" class="section level2">
+<h2>Loading the data</h2>
 <p>Let’s have a quick look at the data provided by NASA.</p>
 <pre class="r"><code>weather &lt;- 
   read_csv(&quot;https://data.giss.nasa.gov/gistemp/tabledata_v4/NH.Ts+dSST.csv&quot;, 
@@ -41,6 +43,7 @@ head(weather)</code></pre>
 <p>The data gives us the information on the deviation of the temperature
 from expected temperature for every month and year between 1880 and
 2021.</p>
+</div>
 <div id="time-series-scatter-plot" class="section level2">
 <h2>Time-series scatter plot</h2>
 <p>Let’s see what was the dynamic of weather anomalies over years. In order

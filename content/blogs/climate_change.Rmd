@@ -56,6 +56,8 @@ In this section I will conduct an analysis of weather anomalies between
 1880 - 2022. The data used in this analysis has been collected by NASA's
 Goddard Institute for Space Studies.
 
+## Loading the data
+
 Let's have a quick look at the data provided by NASA.
 
 ```{r weather_data}

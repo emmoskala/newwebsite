@@ -55,6 +55,8 @@ product are:
 3.  G - government spending
 4.  Net exports (exports - imports).
 
+## Loading the data
+
 The file we will work with is [GDP and its breakdown at constant 2010
 prices in US Dollars](http://unstats.un.org/unsd/amaapi/api/file/6).
 Let's have look at the dataset to see how it is structured and organised
@@ -83,10 +85,12 @@ glimpse(tidy_GDP_data)
 
 ```
 
-I want to compare GDP components between 3 countries that I am
-interested in. To do this, I am creating a vector with chosen countries.
-Further, I mutate the value by dividing them by 1e9 so that the figures
-are expressed in billions.
+## Components of GDP over time
+
+Let's compare GDP components between 3 countries that we are interested
+in. To do this, we are creating a vector with chosen countries. Further,
+we mutate the value by dividing them by `1e9` so that the figures are
+expressed in billions.
 
 ```{r }
 country_list <- c("United States","India", "Germany")
@@ -136,6 +140,8 @@ ggplot(tidy_GDP_for_graph1,
 
 ```
 
+## GDP as sum of components
+
 As mentioned above, GDP is the sum of Household Expenditure (Consumption
 *C*), Gross Capital Formation (business investment *I*), Government
 Expenditure (G) and Net Exports (exports - imports).
@@ -177,6 +183,8 @@ tidy_GDP_data_comparison %>%
 > Above in the table we may see that there are some minor differences
 > between what we calculated as GDP and the GDP figure included in the
 > dataset.
+
+## Components expressed in percentage of GDP
 
 Let's see what was the dynamic of GDP and its components in percentage
 of GDP between the countries we chosen previously.
@@ -226,6 +234,8 @@ wider_gdp %>%
 > the same amount, with gross capital formation briefly increasing to
 > more than government expenditure, before dipping back down to less
 > than government expenditure.
+
+## GDP breakdown comparison
 
 Finally, let's plot a graph showing a dynamic of GDP and its components
 between Poland, Spain, Singapore and China over given time period.
